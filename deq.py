@@ -36,6 +36,12 @@ class Deq:
     def first(self):
         return self.array[0]
 
+    def __contains__(self, item):
+        for x in self.array:
+            if x == item:
+                return True
+        return False
+
 
 if __name__ == "__main__":  # pragma: no cover
     s = Deq()

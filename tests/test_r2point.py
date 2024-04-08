@@ -47,6 +47,11 @@ class TestR2Point(unittest.TestCase):
         a, b, c = R2Point(0.0, 0.0), R2Point(1.0, 0.0), R2Point(1.0, 1.0)
         self.assertLess(R2Point.area(a, c, b), 0.0)
 
+    # Три точки лежат на одной прямой
+    def test_is_triangle(self):
+        a, b, c = R2Point(0.0, 0.0), R2Point(1.0, 0.0), R2Point(2.0, 0.0)
+        self.assertFalse(R2Point.is_triangle(a, c, b))
+
     # Точки могут лежать внутри и вне "стандартного" прямоугольника с
     # противоположными вершинами (0,0) и (2,1)
     def test_is_inside1(self):

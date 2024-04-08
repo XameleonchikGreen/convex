@@ -5,12 +5,14 @@ class R2Point:
     """ Точка (Point) на плоскости (R2) """
 
     # Конструктор
-    def __init__(self, x=None, y=None):
+    def __init__(self, x=None, y=None, arc=False, contact=False):
         if x is None:
             x = float(input("x -> "))
         if y is None:
             y = float(input("y -> "))
         self.x, self.y = x, y
+        self.arc = arc
+        self.contact = contact
 
     # Площадь треугольника
     @staticmethod
@@ -40,8 +42,9 @@ class R2Point:
 
     # Совпадает ли точка с другой?
     def __eq__(self, other):
+        eps = 1e-8
         if isinstance(other, type(self)):
-            return self.x == other.x and self.y == other.y
+            return abs(self.x - other.x) < eps and abs(self.y - other.y) < eps
         return False
 
 
